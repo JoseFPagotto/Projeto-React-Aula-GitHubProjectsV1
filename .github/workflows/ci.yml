@@ -1,0 +1,28 @@
+name: Executar Testes Unitários 
+ 
+on: 
+  push: 
+    branches: [ main, master ] 
+  pull_request: 
+    branches: [ main, master ] 
+defaults:
+  run:
+    working-directory: Projeto-React-Vite-Tailwind-PostCSSAula 
+jobs: 
+  test: 
+    runs-on: ubuntu-latest 
+ 
+    steps: 
+      - name: Baixar o código 
+        uses: actions/checkout@v4 
+ 
+      - name: Configurar Node.js 
+        uses: actions/setup-node@v4 
+        with: 
+          node-version: 20 
+ 
+      - name: Instalar dependências 
+        run: npm ci 
+ 
+      - name: Rodar testes unitários 
+        run: npm test
